@@ -104,11 +104,11 @@ paths:
                   message:
                     type: string
 #
-#components:
-#  securitySchemes:
-#    BasicAuth:
-#      type: http
-#      scheme: basic
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
 #
 #  #  ----- Added lines  ----------------------------------------
 #  schemas:

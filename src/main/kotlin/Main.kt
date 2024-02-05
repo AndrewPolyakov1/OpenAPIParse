@@ -11,5 +11,5 @@ fun main() {
     val path = "C:\\Coding\\ProjectOpenAPI\\LibSLParse_Gradle\\src\\main\\resources\\test_spec.yaml"
     val mapper = ObjectMapper(YAMLFactory()).registerModule(KotlinModule())
     val obj: OpenApi = mapper.readValue(Path.of(path).toFile())
-    print(obj)
+    println(obj.toPrettyString(4))
 }

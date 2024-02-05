@@ -2,12 +2,21 @@ package org.example
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
+fun Any.toPrettyString(indentSize: Int = 2) = " ".repeat(indentSize).let { indent ->
+    toString()
+        .replace(", ", ",\n$indent")
+        .replace("(", "(\n$indent")
+        .dropLast(1) + "\n)"
+}
+
 data class OpenApi(
     val openapi: String,
     val info: Info,
     val servers: List<Server>,
     val security: List<Security>?,
-    val paths: Map<String, RequestHandler>?
+    val paths: Map<String, RequestHandler>?,
+    val components: Map<String, Any>?,
+
 )
 
 data class Info(
