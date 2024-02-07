@@ -14,20 +14,35 @@ data class OpenApi(
     val info: Info,
     val servers: List<Server>,
     val security: List<Security>?,
-    val paths: Map<String, RequestHandler>?,
+    // TODO: Make Path class
+    val paths: Map<String, Path>?,
+    // TODO: Add separate class for items
     val components: Map<String, Any>?,
 
-)
+    )
 
 data class Info(
     val version: String,
     val title: String,
-    val description: String?
+    val description: String?,
+    val termsOfService: String?,
+    // TODO: Add fields
+//    val contact,
+//    val license
+
 )
 
 data class Server(
     @JsonProperty("url")
-    val url: String
+    val url: String,
+    val description: String?,
+    val variables: Map<String, ServerVariable>?
+)
+
+data class ServerVariable(
+    val enum: List<String>?,
+    val default: String,
+    val description: String?
 )
 
 data class Security(
@@ -35,9 +50,18 @@ data class Security(
     val BasicAuth: List<Any>
 )
 
-data class RequestHandler(
+data class Path(
     val get: Request?,
-    val post: Request?
+    val post: Request?,
+    val put: Request?,
+    val delete: Request?,
+    val options: Request?,
+    val head: Request?,
+    val patch: Request?,
+    val trace: Request?,
+    val servers: List<Server>?,
+    // TODO: parameters objects list
+
 )
 
 data class Request(
@@ -76,7 +100,9 @@ data class Schema(
     val properties: Properties?,
     // TODO: Add separate class for items
     val items: Map<String, Any>?,
-    val `$ref`: String?
+    val `$ref`: String?,
+    val summary: String?,
+    val description: String?
 )
 
 data class Properties(

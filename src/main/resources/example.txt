@@ -1,0 +1,23 @@
+api <Simple API>;
+
+types {
+    url (String);
+    ...
+}
+
+servers {
+    url https://example.io/v1;
+    url https://example.io/v1;
+    ...
+}
+
+#################
+paths {
+    ...
+}
+
+####################
+
+path <name/name> {
+
+}
