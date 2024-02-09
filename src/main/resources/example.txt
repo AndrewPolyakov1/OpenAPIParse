@@ -21,3 +21,11 @@ paths {
 path <name/name> {
 
 }
+
+fun get(limit, offset): (String, Response?){
+
+} # Подумать
+
+1. Описать как сущности OpenAPI портировать в LibSL
+2. Парсер
+3. Подключить библиотеку и перегонять в узлы
