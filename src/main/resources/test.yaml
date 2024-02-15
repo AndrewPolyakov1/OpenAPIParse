@@ -1,2 +1,13 @@
-username: "Test"
-password: "123456"
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to illustrate OpenAPI concepts
+
+servers:
+  - url: https://example.io/v1
+
+security:
+  - BasicAuth: []
+
+paths:

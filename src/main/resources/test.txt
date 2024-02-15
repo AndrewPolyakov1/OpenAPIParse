@@ -1,1 +1,3 @@
-api <Simple API>;
+library Simple API;
+version 1.0.0;
+// Description: A simple API to illustrate OpenAPI concepts

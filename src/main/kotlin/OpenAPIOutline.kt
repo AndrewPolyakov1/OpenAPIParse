@@ -79,8 +79,18 @@ data class Response(
 
 data class ResponseContent(
     // TODO: Add separate class for items
-    val schema: Map<String, Any>
+//    val schema: Map<String, Any>
+    val schema: Schema
+
 )
+
+//data class Schema (
+//    val type: String,
+//    val items: Array<Any>?,
+//    val properties: Map<String, Any>?
+//
+//
+//)
 
 data class RequestBody(
     val required: Boolean,
@@ -97,7 +107,7 @@ data class Parameter(
 
 data class Schema(
     val type: String?,
-    val properties: Properties?,
+    val properties: Map<String, Any>?,
     // TODO: Add separate class for items
     val items: Map<String, Any>?,
     val `$ref`: String?,
