@@ -18,7 +18,7 @@ fun main() {
         val obj = parseIntoObject(Path.of(path))
         val dest = "C:\\Coding\\ProjectOpenAPI\\LibSLParse_Gradle\\src\\main\\resources\\test.lsl"
         val codegen = Codegen(obj)
-        codegen.generate(dest, true)
+        codegen.generate(dest)
     } catch (e: Exception){
         System.err.println("Exception occurred: ${e.toString()}")
     }

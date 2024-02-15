@@ -18,8 +18,9 @@ class Codegen(api: OpenApi) {
 
         return "// Description: ${description}\n" +
                 "libsl \"1.0.0\";\n" +
-                "library $title;" +
-                "\nversion $version;\n"
+                "library $title\n" +
+                "\tversion \"${version}\"\n" +
+                "\tlanguage \"OpenAPI\";\n"
     }
 
     private fun getServers(): String {
@@ -45,7 +46,7 @@ class Codegen(api: OpenApi) {
     }
 
     private fun getOpearations(name: String, path: Path): String {
-        var output = "// Path $name operations:\n"
+        var output = "\n// #-# Path $name operations:\n"
         if (path.get != null) {
             output += operationGet(name, path.get)
         }
@@ -60,7 +61,7 @@ class Codegen(api: OpenApi) {
 //    }
 
     private fun operationGet(name: String, operation: Request): String {
-        var output = "// \tGet operation:\n"
+        var output = "// #-# \tGet operation:\n"
 
         val types: MutableMap<String, String> = mutableMapOf()
         operation.responses?.forEach { response ->
@@ -75,10 +76,11 @@ class Codegen(api: OpenApi) {
 
         output += "type t${name}_get {\n"
         types.forEach { item ->
-            output += "\tresponse${item.key} : ${item.value};\n"
+            output += "\tresponse${item.key}: ${item.value};\n"
         }
         output += "}\n"
 
+        output += "@Get\n"
         output += "fun ${name}_get ( " +
                 "" + // TODO: Add parameters
                 " ) : t${name}_get {}\n"
